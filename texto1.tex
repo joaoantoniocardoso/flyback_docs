@@ -1,0 +1,28 @@
+\section[Desenvolvimento]{Desenvolvimento}
+	
+	\subsection{Gerando um tom}
+	
+	Com a finalidade de iniciar os estudos com áudio, a primeira função a ser criada é gerar um tom senoidal e verificar sua funcionalidade no tempo e na frequência, através da transformada rápida de \textit{Fourier} (\textit{FFT}). A função criada consta no \autoref{tonegen.m}, e sua utilização, no \autoref{questao1.m}, no qual foi gerada uma senoide em $440 [Hz]$, de amplitude $0,1$, de $100$ segundos de duração, amostrado em $8000\,[Hz]$ e em seguida, plotados no tempo (apenas um período), e na frequência. Os resultados podem ser verificados na \autoref{fq1}.
+	
+	\begin{equation}
+	\label{eq-eco1}
+	s_e(t)=\alpha\,s(t -T)
+	\end{equation}
+	
+	\begin{equation}
+	\label{eq-eco2}
+	r(t)=s(t)+s_e(t)
+	\end{equation}
+	
+	O sinal de eco facilmente perceptível no áudio, e como é composto apenas das frequências do sinal original, pouco é alterado em sua resposta na frequência (\autoref{fq8-fft}). No entanto, na \autoref{fq8-time} é perceptível que o sinal ficou mais denso - as regiões onde apresentavam um silêncio, passaram a ser preenchidas pelo eco, embora ele não seja longo o suficiente para gerar uma calda muito extensa, no final do arquivo, embora já seja perceptível.
+	
+	%\begin{figure}[htbp]
+	%	\centering
+	%	\caption{Comparativo de tempo de processamento em relação à duração do \textit{IR}}
+	%	\includegraphics[width=\textwidth,height=240px,keepaspectratio]{imgs/q9_convs.png}
+	%	\label{fq9-convs}
+	%	\legend{Comparativo de tempo de processamento em relação à duração do \textit{IR}. Fonte: do autor. }
+	%\end{figure}
+		
+	
+	Para compreender quanto tempo leva o processamento, fez-se à uma regressão linear (usando o próprio \textit{MATLAB}), o qual pode ser corrigida para aproximadamente $t_{processamento} \approx 1,28*T$, onde $T$ é a duração do \textit{IR}, e vale exclusivamente para o arquivo de áudio gravado, executado neste específico computador. Com tal relação, podemos notar principalmente, que o tempo de processamento será maior que o tempo de duração do \textit{IR}, portanto, inviável para tempo real.

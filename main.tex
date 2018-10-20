@@ -47,154 +47,10 @@
 	brazil,				% o último idioma é o principal do documento
 ]{abntex2}
 
+\usepackage{style}
 
-% ---
-% PACOTES
-% ---
+\input{capa.tex}
 
-% ---
-% Pacotes fundamentais 
-% ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
-% ---
-
-% ---
-% Pacotes adicionais, usados no anexo do modelo de folha de identificação
-% ---
-\usepackage{multicol}
-\usepackage{multirow}
-% ---
-
-% ---
-% Pacotes adicionais
-% ---
-\usepackage{placeins}	% permite usar 
-\usepackage{wrapfig} % Permite textos em volta de figuras
-\usepackage{pdfpages} % Permite usar o \includepdf
-% ---
-
-% ---
-% Pacotes de citações
-% ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-
-% ---
-% Pacotes de códigos fonte
-% ---
-\usepackage{listingsutf8}
-\usepackage{matlab}
-
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
-
-% ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-%	\ifcase #1 %
-%	Nenhuma citação no texto.%
-%	\or
-%	Citado na página #2.%
-%	\else
-%	Citado #1 vezes nas páginas #2.%
-%	\fi
-}%
-% ---
-
-% ---
-% Informações de dados para CAPA e FOLHA DE ROSTO
-% ---
-\titulo{PROCESSAMENTO DE AUDIO COM MATLAB}
-\autor{João Antônio Cardoso}
-\local{Florianópolis}
-\data{\today}
-%\data{2015, v-1.9.6}
-\orientador[Prof. ]{Fernando Pacheco}
-\instituicao{Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina - Campus Florianópolis \\
-	Engenharia Eletrônica \\
-	Processamento Digital de Sinais II
-}
-\tipotrabalho{Relatório técnico}
-% O preambulo deve conter o tipo do trabalho, o objetivo, 
-% o nome da instituição e a área de concentração 
-\preambulo{\@title - relatório técnico para aprovação na parte laboratorial da disciplina de Processamento Digital de Sinais II.}
-% ---
-
-% ---
-% Configurações de aparência do PDF final
-
-% alterando o aspecto da cor azul
-\definecolor{blue}{RGB}{41,5,195}
-
-% informações do PDF
-\makeatletter
-\hypersetup{
-	%pagebackref=true,
-	pdftitle={\@title}, 
-	pdfauthor={\@author},
-	pdfsubject={\imprimirpreambulo},
-	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={relatório técnico}, 
-	colorlinks=true,       		% false: boxed links; true: colored links
-	linkcolor=blue,          	% color of internal links
-	citecolor=blue,        		% color of links to bibliography
-	filecolor=magenta,      		% color of file links
-	urlcolor=blue%,
-	%bookmarksdepth=4
-}
-\makeatother
-% --- 
-
-% ---
-% Modificando a capa padrão
-% ---
-\renewcommand{\imprimircapa}{
-	\begin{capa}
-		\SingleSpacing
-		\begin{adjustwidth}{}{}			
-			\begin{minipage}{1\textwidth}
-				\begin{wrapfigure}{l}{0.25\textwidth}
-					\vspace*{-1em}\includegraphics[height=4em]{logotipo_ifsc.jpg}
-				\end{wrapfigure}
-				\imprimirinstituicao 
-			\end{minipage}
-			\vfill
-			\begin{center}\ABNTEXchapterfont\LARGE\imprimirtitulo
-				\vfill
-				\small
-				\begin{center}
-					Aluno: \imprimirautor\\[1em]
-					\imprimirorientadorRotulo\imprimirorientador\\
-					\imprimircoorientadorRotulo\imprimircoorientador
-				\end{center}
-				\vfill
-				\imprimirlocal, \imprimirdata
-			\end{center}	
-		\end{adjustwidth}
-	\end{capa}
-}
-
-% --- 
-% Espaçamentos entre linhas e parágrafos 
-% --- 
-
-% O tamanho do parágrafo é dado por:
-\setlength{\parindent}{1.3cm}
-
-% Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
 
 % ---
 % compila o indice
@@ -233,7 +89,6 @@
 	%\cleardoublepage
 	% ---
 	
-	
 	% ----------------------------------------------------------
 	% ELEMENTOS TEXTUAIS
 	% ----------------------------------------------------------
@@ -241,59 +96,9 @@
 	
 	\pagebreak
 	
-	% ----------------------------------------------------------
-	% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
-	% ----------------------------------------------------------
-	\chapter*[Introdução]{Introdução}
-	\addcontentsline{toc}{chapter}{Introdução}
-	
-	O \textit{MATLAB} (\textit{MATrix LABoratory}) é um \textit{software} de alta performance, capaz de lidar com matrizes, processamento de sinais e conta com inúmeras ferramentas para a construção de gráficos, entrada e saída de arquivos, como planilhas \textit{.csv}, arquivos de áudio \textit{.wav}, imagens \textit{.png}, dentre outros.
-	
-	Neste trabalho é apresentado a solução para uma série de atividades propostas pelo Professor Fernando Pacheco com a finalidade de exercitar e aprender mais sobre áudio, processamento de sinais e \textit{MATLAB}.
-	
-	\section[Objetivos]{Objetivos}
-	
-	A partir das atividades propostas, compreende-se que são objetivos deste trabalho criar funções para:
-	
-	\begin{itemize}
-		\item geração de um sinal senoidal;
-		\item geração de tons \textit{DTMF} (\textit{Dual-Tone Multi-Frequency});
-		\item re-amostrar pela metade da frequência;
-		\item re-amostrar pelo dobro da frequência;
-		\item geração de um sinal de eco;
-		\item aplicação de uma resposta de impulso (\textit{IR}) extraída de diversos ambientes em um sinal de voz gravada utilizando a técnica da convolução no tempo.
-	\end{itemize}
-	
-	Para cada uma destas funções, serão realizados testes e seus resultados, comentados.
-	
-	\section[Desenvolvimento]{Desenvolvimento}
-	
-	\subsection{Gerando um tom}
-	
-	Com a finalidade de iniciar os estudos com áudio, a primeira função a ser criada é gerar um tom senoidal e verificar sua funcionalidade no tempo e na frequência, através da transformada rápida de \textit{Fourier} (\textit{FFT}). A função criada consta no \autoref{tonegen.m}, e sua utilização, no \autoref{questao1.m}, no qual foi gerada uma senoide em $440 [Hz]$, de amplitude $0,1$, de $100$ segundos de duração, amostrado em $8000\,[Hz]$ e em seguida, plotados no tempo (apenas um período), e na frequência. Os resultados podem ser verificados na \autoref{fq1}.
-	
-	\begin{equation}
-	\label{eq-eco1}
-	s_e(t)=\alpha\,s(t -T)
-	\end{equation}
-	
-	\begin{equation}
-	\label{eq-eco2}
-	r(t)=s(t)+s_e(t)
-	\end{equation}
-	
-	O sinal de eco facilmente perceptível no áudio, e como é composto apenas das frequências do sinal original, pouco é alterado em sua resposta na frequência (\autoref{fq8-fft}). No entanto, na \autoref{fq8-time} é perceptível que o sinal ficou mais denso - as regiões onde apresentavam um silêncio, passaram a ser preenchidas pelo eco, embora ele não seja longo o suficiente para gerar uma calda muito extensa, no final do arquivo, embora já seja perceptível.
-	
-	%\begin{figure}[htbp]
-	%	\centering
-	%	\caption{Comparativo de tempo de processamento em relação à duração do \textit{IR}}
-	%	\includegraphics[width=\textwidth,height=240px,keepaspectratio]{imgs/q9_convs.png}
-	%	\label{fq9-convs}
-	%	\legend{Comparativo de tempo de processamento em relação à duração do \textit{IR}. Fonte: do autor. }
-	%\end{figure}
-		
-	
-	Para compreender quanto tempo leva o processamento, fez-se à uma regressão linear (usando o próprio \textit{MATLAB}), o qual pode ser corrigida para aproximadamente $t_{processamento} \approx 1,28*T$, onde $T$ é a duração do \textit{IR}, e vale exclusivamente para o arquivo de áudio gravado, executado neste específico computador. Com tal relação, podemos notar principalmente, que o tempo de processamento será maior que o tempo de duração do \textit{IR}, portanto, inviável para tempo real.
+	\input{intro.tex}
+	\input{texto1.tex}
+	%\input{texto2.tex}
 		
 	% ---
 	% Finaliza a parte no bookmark do PDF
@@ -302,17 +107,7 @@
 	% ---
 	\phantompart
 	
-	% ---
-	% Conclusão
-	% ---
-	\section[Conclusões e recomendações]{Conclusões e recomendações}
-	% ---
-	
-	Este trabalho apresentou de modo resumido a implementação de uma série de funções para processamento de áudio no \textit{MATLAB}, assim como comentários sobre os resultados obtidos, que sempre quando possível, foram relacionados com fenômenos da música.
-
-	Foi perceptível que uma ferramenta como \textit{MATLAB} permite o estudo de processamento de sinal para áudio, executando \textit{scripts} programados pelo usuário, abrindo, gerando e gravando arquivos em disco que podem ser utilizados por outros \textit{softwares}.
-	
-	Por fim, notou-se que há uma limitação quanto ao poder de processamento no que diz respeito à técnica utilizada para realizar a convolução, portanto, fica o anseio por estudar técnicas que permitam realizar a convolução em tempo real.
+	\input{concl.tex}
 	
 	% ----------------------------------------------------------
 	% ELEMENTOS PÓS-TEXTUAIS

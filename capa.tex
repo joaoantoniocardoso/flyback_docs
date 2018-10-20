@@ -1,0 +1,47 @@
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{FLYBACK COM FAN7554}
+\autor{João Antônio Cardoso \and Jonas Vieira de Souza}
+\local{Florianópolis}
+\data{\today}
+%\data{2015, v-1.9.6}
+\orientador[Prof. ]{Joabel Moia}
+\instituicao{Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina - Campus Florianópolis \\
+	Engenharia Eletrônica \\
+	Eletrônica de Potência II
+}
+\tipotrabalho{Relatório técnico}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{\@title - relatório técnico para aprovação na parte da disciplina de Eletrônica de Potência II.}
+% ---
+
+% ---
+% Modificando a capa padrão
+% ---
+\renewcommand{\imprimircapa}{
+	\begin{capa}
+		\SingleSpacing
+		\begin{adjustwidth}{}{}			
+			\begin{minipage}{1\textwidth}
+				\begin{wrapfigure}{l}{0.25\textwidth}
+					\vspace*{-1em}\includegraphics[height=4em]{logotipo_ifsc.jpg}
+				\end{wrapfigure}
+				\imprimirinstituicao 
+			\end{minipage}
+			\vfill
+			\begin{center}\ABNTEXchapterfont\LARGE\imprimirtitulo
+				\vfill
+				\small
+				\begin{center}
+					Aluno: \imprimirautor\\[1em]
+					\imprimirorientadorRotulo\imprimirorientador\\
+					\imprimircoorientadorRotulo\imprimircoorientador
+				\end{center}
+				\vfill
+				\imprimirlocal, \imprimirdata
+			\end{center}	
+		\end{adjustwidth}
+	\end{capa}
+}
